@@ -1,0 +1,15 @@
+{%extends 'main.html'%}
+<hr>
+{%block content%}
+    <h1>this is Home</h1>
+    <hr>
+    <div>
+        {% for st in student%}
+
+            <li><a href="{%url 'info' st.id %}">{{st.id}}:  {{st.s_name}}</a></li>
+
+        {%endfor%}
+
+
+    </div>
+{%endblock%}

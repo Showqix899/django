@@ -1,0 +1,21 @@
+{%extends 'main.html'%}
+{%block content%}
+
+<h1>this is info</h1>
+<br>
+<div>
+    <li>Name: {{intel.s_name}}</li>
+    <li>CGPPA: {{intel.cgpa}}</li>
+    <li>Department: {{intel.dept_name}}</li>
+    <li>Course: {{intel.c_name}}</li>
+</div>
+<hr>
+<h1>Address And Contacts</h1>
+<div>
+    <li>Name:{{intelb.s_name}}</li>
+    <li>Address:{{intelb.address}}</li>
+    <li>Email: {{intelb.email_contact}}</li>
+    <li>Phone:{{intelb.phon_contact}}</li>
+</div>
+
+{%endblock%}
