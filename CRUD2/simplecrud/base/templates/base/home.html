@@ -4,6 +4,9 @@
 <h1>Student List</h1>
 <div>
     {%for student in students%}
+        <hr>
+        <h3><a href="{%url 'update-room' student.id%}">Update</a></h3>
+        <h3><a href="{%url 'delete-room' student.id%}">Delete</a></h3>
         <li><a href="{%url 'info' student.id%}">{{student.id}}   :    {{student.s_name}}</a></li>
     {%endfor%}
 </div>

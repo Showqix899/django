@@ -1,0 +1,9 @@
+{%extends 'main.html'%}
+{%block content%}
+    <form action=""method='POST'>
+        {%csrf_token%}
+        <p>ARE you Sure {{form}}</p>
+        <a href="/">Go back</a>
+        <input type="submit" value="Delete">
+    </form>
+{%endblock%}
