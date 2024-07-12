@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="" method="POST">
+            {%csrf_token%}
+            <label>Username: </label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+            <label>First name: </label>
+            <input type="text" id="name" name="fname" placeholder="Enter your firstname">
+            <label>last name: </label>
+            <input type="text" id="lname" name="lname" placeholder="Enter your lastname">
+            <label>Email: </label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <label>Password: </label>
+            <input type="password" id="pass1" name="pass1" placeholder="Enter your password">
+            {%if ms2%}
+            <style>
+                .ms{
+                    border: 1px solid red;
+                }
+            </style>
+            {%endif%}
+            <label>Confirm Password: </label>
+            <input type="password" id="pass2" name="pass2" placeholder="Enter your password" class="ms">
+            <input type="submit" value="Sign up"></input>
+        </form>
+        <div>
+            <p>{{ms}}</p>
+        </div>
+    </div>
+    
+</body>
+</html>
