@@ -1,0 +1,10 @@
+.signup-container{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+
+}
+body{
+    background-color:black;
+}
