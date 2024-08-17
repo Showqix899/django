@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+{% block content %} 
+<style>
+
+    .card-body{
+        padding:20px;
+    }
+    .row{
+        display:grid;
+        min-height:100vh;
+        width: 100%;
+        gap: 10px;
+        
+    }
+    .card{
+        place-self:center;
+        
+    }
+</style>
+<div class="row">
+    {% for recipe in recipes %}
+       
+   
+    <div class="card" style="width:600px; height:auto;  margin-top:20px;">
+        <a href="{% url 'userInfo' recipe.user.username %}" class="btn" style="margin: 10px;">@{{recipe.user.username}}</a>
+        <img src="{{recipe.images.url}}" class="card-img-top img-fluid mt-2" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">{{recipe.name}}</h3>
+          <h5 class="card-text">{{recipe.catagory}}</h5>
+          <p class="card-text">{{recipe.description}}</p>
+          <p>{{ recipe.created_at |timesince}} ago</p>
+          <a href="{% url 'recipeInfo' recipe.id %}" class="btn btn-primary">More</a>
+          {% if user.is_authenticated %}
+          <form action="{% url 'liked_recipes' recipe.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-warning btn-sm my-4"><i class="fa-regular fa-heart"></i></button>
+          </form>
+          {% endif %}
+          <p class="my-1">{{recipe.total_likes}} likes</p>
+   
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

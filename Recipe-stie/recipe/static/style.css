@@ -1,0 +1,13 @@
+.login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.userInfo{
+    display:flex;
+    justify-content: space-between;
+    padding: 30px;
+
+    width: 100%;
+
+}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Recipe Info</title>
+
+{% endblock %}
+{% block content %}
+<style>
+    .pr{
+        width:100%;
+        height:auto;
+        display:flex;
+        justify-content:center;
+        padding:20px;
+        
+    }
+    .ch p,h2,h3{
+        margin-top: 20px;
+    }
+   
+    .ch-p{
+        margin:20px;
+        color:yellow;
+    }
+    
+    
+</style>
+<div class="pr">
+    <div class="ch">
+        <a href="{% url 'userInfo' item.user%}">@{{item.user}}</a>
+        <p>{{ item.created_at}}</p>
+        <img src="{{item.images.url}}" alt="" class="img-fluid rounded" style="width:600px; height:500px">
+        
+        <h2>Recipe Name: {{item.name}}</h2>
+        <h2>Catagory:  {{item.catagory}}</h2>
+        <h2>Description:</h2>
+        <p>{{item.description}}</p>
+        <div >ingredients: {{item.ingrediant}}</div> 
+        
+    </div>
+</div>
+
+{% endblock %}

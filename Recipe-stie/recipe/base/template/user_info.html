@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>User Info</title>
+
+{% endblock %}
+{% block content %}
+<style>
+
+    .userInfo{
+        display:flex;
+        justify-content: space-between;
+        padding: 30px;
+    
+        width: 100%;
+        margin-bottom:20px;
+        border:2px solid lime;
+        margin-top:20px;
+        border-radius:10px;
+    
+    }
+    .userPost{
+        display:grid;
+        min-height:100vh;
+        width: 100%;
+        gap: 10px;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .card{
+        place-self:center;
+    }
+</style>
+<div>
+    <div class="userInfo">
+        <h1>Profile: {{user}}</h1>
+        {% if request.user == user %}
+        <a class="btn btn-success m-1" href="{% url 'recipeForm'%}">create new post</a>
+        {% endif %}
+    </div>
+    <div class="userPost">
+        {% for post in userPost %}
+
+        <div class="card" style="width:600px; height:auto;  margin-top:20px;">
+    
+            <img src="{{post.images.url}}" class="card-img-top img-fluid mt-2" alt="...">
+            <div class="card-body">
+              <h3 class="card-title">{{post.name}}</h3>
+              <h5 class="card-text">{{post.catagory}}</h5>
+              <p class="card-text">{{post.description}}</p>
+              <p>{{ post.created_at |timesince}} ago</p>
+              <a href="{% url 'recipeInfo' post.id%}" class="btn btn-primary">More</a>
+                {% if request.user == post.user %}
+                <a href="{% url 'recipeEdit' post.id %}" class="btn btn-success">Edit</a>
+                <a href="{% url 'recipeDelete' post.id %}" class="btn btn-danger">Delete</a>
+                {% endif %}
+              
+            </div>
+    
+        </div>
+        
+        
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}

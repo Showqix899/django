@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+<style>
+    .p{
+        width: 100%;
+        display:grid;
+    }
+    .p div{
+        place-self:center;
+    }
+</style>
+
+{% block title %}
+<title>Delete Post</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    .p{
+        width: 100%;
+        display:grid;
+        
+    }
+    .c1{
+        place-self:center;
+        margin-top:12rem;
+    }
+    .c11{
+        display:flex;
+        
+    }
+    .c12{
+        display:flex;
+        width: 100%;
+        justify-content:center;
+        margin-top:20px;
+    }
+    
+</style>
+
+<div class="p">
+    <div class="c1">
+        <div class='c11'>
+        <h3>Are you sure, You want to delete this post?</h3>
+        <form action="" method="POST">
+        {% csrf_token %}
+        <button type="SUBMIT" class="btn btn-outline-danger mx-3">Delete</button>
+        </form>
+        </div>
+        <div class="c12">
+            <p>OR<a href="{% url 'home'%}" class="btn btn-outline-success mx-3"><i class="fa-solid fa-arrow-left mx-2"></i>go home</a>            </p>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+{% endblock %}
