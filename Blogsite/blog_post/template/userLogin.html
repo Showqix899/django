@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Sign in</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    .parent{
+        width: 100%;
+        height: 100vh;
+        display:grid;
+    }
+    .child{
+        place-self:center;
+        padding:40px;
+        border:2px solid gray;
+        border-radius:10px;
+        display:grid;
+    }
+    .header{
+        place-self:center;
+    }
+</style>
+<div class="container">
+    <div class="parent">
+        <div class="child">
+            <div class="header"><h3>Sign In</h3></div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Sign in">
+            </form>
+            <p>Don't have an account? <a href="{% url 'signup'%}">Sign up</a></p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

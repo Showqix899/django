@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+<title>User Profile</title>
+
+{% endblock title %}
+
+{% block content %}
+<style>
+    .p1{
+        display:grid;
+        width: 100%;
+
+    }
+    .btn{
+        place-self:center;
+    }
+</style>
+<div class="container">
+    <div><h4 class="text-center">Profile :{{user_p}}</h4></div>
+
+    {% for post in posts  %}
+    
+    <div class="p1">
+        <div class="post-header mb-2">
+            <div>{{post.created_at | timesince}}</div>
+        </div>
+        <div class="img-body mt-2">
+            <img src="{{post.photo.url}}" alt="image" style="width:100%;" class="img-fluid">
+        </div>
+        <div class="title mt-3">
+            <h3 style="color:gray">{{post.title}}</h3>
+        </div>
+        <div class="content mt-2">
+            <p>{{post.content}}</p>
+        </div>
+        <div class="btn">
+            {% if user == post.user %}
+            <a href="{% url 'update' post.id%}" class="m-3 btn btn-outline-success">Update</a>
+            <a href="{% url 'delete' post.id%}" class="m-3 btn btn-outline-danger">Delete</a>
+            {% endif %}
+        </div>
+        <hr>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

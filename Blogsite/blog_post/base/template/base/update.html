@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    <title>Update Post</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .parent{
+        width: 100%;
+        height: 100vh;
+        display:grid;
+    }
+    .child{
+        place-self:center;
+        padding:40px;
+        border:2px solid gray;
+        border-radius:10px;
+        display:grid;
+    }
+    .header{
+        place-self:center;
+    }
+</style>
+
+<div class="container">
+    <div class="parent">
+       
+        <div class="child">
+            <div class="header mb-2"><h3>Post Your Article</h3></div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="POST">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

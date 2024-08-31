@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    @keyframes appear {
+        from{
+            opacity: 0;
+            transform:translateX(-100px);
+        }
+        to{
+            opacity: 1;
+            transform:translateY(0px);
+        }
+        
+    }
+    .parent{
+        width: 100%;
+        height: 100vh;
+        display:grid;
+        grid-template-columns:0.5fr 3.5fr
+    }
+    
+    .post-header{
+        width: 100%;
+        display:flex;
+        justify-content:space-between;
+    }
+    .post{
+        width: 100%;
+        padding-left:50px;
+        padding-right:50px;
+        animation:appear linear;
+        animation-timeline:view();
+        animation-range:entry 0 cover 40%;
+    }
+   
+    .img-fluid{
+        border-radius:10px;
+    }
+    .main {
+        overflow: scroll; /* Ensure content is scrollable */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    /* Hide scrollbars in WebKit browsers (Chrome, Safari) */
+    .main::-webkit-scrollbar {
+        display:none;
+    }
+    .cat-item{
+        padding:10px;
+        border:2px solid black;
+        border-radius:10px;
+        margin-bottom:20px;
+    }
+    .cat-item:hover{
+        color:white;
+        background-color:black;
+    }
+
+</style>
+
+<div class="parent">
+
+<div class="side-bar">
+    <div class="container">
+        <div class="cat-header">
+            <p class="text-center mt-2" style="font-size:20px;">Catagories</p>
+        </div>
+        {% for catagory in posts %}
+            
+                <a href="{% url 'home'%}?q={{catagory.subject}}" class="nav-link cat-item" >{{catagory.subject}}</a>
+        {% endfor %}
+        <a href="{% url 'home'%}">go back</a>
+    </div>
+</div>
+<div class="main">
+    <div class="container">
+        {% for post in posts  %}
+
+        <div class="post"> 
+            <div class="post-header">
+                <div><a href="{% url 'profile' post.user.username%}" class="nav-link">{{post.user.username}}</a></div>
+                <div>{{post.created_at | timesince}}</div>
+            </div>
+            <div class="img-body mt-2">
+                <img src="{{post.photo.url}}" alt="image" style="width:100%;" class="img-fluid">
+            </div>
+            <div class="title mt-3">
+                <h3 style="color:gray">{{post.title}}</h3>
+            </div>
+            <div class="content mt-2">
+                <p>{{post.content}}</p>
+            </div>
+            <hr>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+    
+
+{% endblock %}

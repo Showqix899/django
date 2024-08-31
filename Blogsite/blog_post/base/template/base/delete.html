@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Delete Post</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="parent">
+        <div class="child">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>Are you sure you want to delete it?</p>
+                <input type="submit" value="Delete" class="btn btn-outline-danger">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

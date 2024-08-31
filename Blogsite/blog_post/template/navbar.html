@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home'%}">The Daily Truth</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <li class="nav-item mx-5">
+            <a class="btn btn-outline-info" aria-current="page" href="{% url 'create_post'%}">+ NEW</a>
+          </li>
+          <form class="d-flex mx-3" role="search">
+            <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </ul>
+
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout'%}" class="btn btn-danger">Sign Out</a>
+          <a href="{% url 'profile' user.username%}" class="btn btn-outline-info mx-2">{{user.username}}</a>
+
+        {% else %}
+          <a href="{% url 'signup'%}" class="btn btn-primary mx-2">Sign Up</a>
+          <a href="{% url 'login'%}" class="btn btn-success mx-2">Sign In</a>
+        {% endif %}
+
+        
+      
+      </div>
+    </div>
+  </nav>
