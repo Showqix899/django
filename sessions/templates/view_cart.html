@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+
+    
+    {% for product_id,item in cart.items  %}
+    <hr>
+    <br>
+    <h4>{{item.name}} --- {{item.price}}$ --- quantity:{{item.quantity}}</h4>
+    <a href="{% url 'increase_quantity' product_id %}">+</a>
+       <a href="{% url 'decrease_quantity' product_id %}">-</a>
+    <br>
+    <hr>
+    {% endfor %}
+    
+</body>
+</html>
